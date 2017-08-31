@@ -1,6 +1,10 @@
 class CartsController < ApplicationController
 
   def show
+    if cart.count == 0
+      @home = '/'
+      render 'empty_cart'
+    end
   end
 
   def add_item
