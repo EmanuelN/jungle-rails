@@ -12,11 +12,14 @@ body {
 
   .session {
     float:right;
-    margin: 1em
+    margin: 1.1em
   }
 
   .error {
     color: red;
+  }
+  tbody input {
+    width: 250px;
   }
 }
 

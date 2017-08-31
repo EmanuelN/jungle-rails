@@ -1,6 +1,5 @@
 <h1>Create a new account</h1>
 
-<%= form_for @user, url: '/users' do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -15,11 +14,34 @@
     </div>
   <% end %>
 
-  First name: <%= f.text_field :first_name %>
-  Last name: <%= f.text_field :last_name %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  <%= f.submit "Submit" %>
 
+
+  <%= form_for @user, url: '/users' do |f| %>
+  <div class="panel panel-default items">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td style="width:300px">First Name</td>
+          <td><%= f.text_field :first_name %></td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td><%= f.text_field :last_name %></td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td><%= f.email_field :email %></td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td><%= f.password_field :password %></td>
+        </tr>
+        <tr>
+          <td>Confirm Password</td>
+          <td><%= f.password_field :password_confirmation %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <%= f.submit "Submit" %>
 <% end %>
