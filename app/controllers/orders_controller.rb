@@ -36,15 +36,15 @@ class OrdersController < ApplicationController
   end
 
   def create_order(stripe_charge)
-    order = Order.new(
-      email: params[:stripeEmail],
+    @order = Order.new(
+      email: User.find(session[:user_id]).email,
       total_cents: cart_total,
       stripe_charge_id: stripe_charge.id, # returned by stripe
     )
     cart.each do |product_id, details|
       if product = Product.find_by(id: product_id)
         quantity = details['quantity'].to_i
-        order.line_items.new(
+        @order.line_items.new(
           product: product,
           quantity: quantity,
           item_price: product.price,
@@ -52,8 +52,9 @@ class OrdersController < ApplicationController
         )
       end
     end
-    order.save!
-    order
+    @order.save!
+    UserMailer.order_email(@order).deliver_later
+    @order
   end
 
   # returns total in cents not dollars (stripe uses cents as well)
