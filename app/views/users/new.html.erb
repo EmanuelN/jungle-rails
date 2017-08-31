@@ -1,6 +1,19 @@
 <h1>Create a new account</h1>
 
-<%= form_for :user, url: '/users' do |f| %>
+<%= form_for @user, url: '/users' do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %> prohibited
+        this user from being created:
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   First name: <%= f.text_field :first_name %>
   Last name: <%= f.text_field :last_name %>
