@@ -25,7 +25,13 @@
         </dl>
       </div>
     </div>
-
   </article>
-
+  <% @product.reviews.each do |review| %>
+  User: <%= User.find(review.user_id).first_name %><br>
+  Rating: <%= review.rating %>/5<br>
+    <% if review.description %>
+    Details: <%= review.description %><br>
+    <% end %>
+    <br>
+  <% end %>
 </section>

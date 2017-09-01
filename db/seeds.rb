@@ -147,12 +147,12 @@ puts "Re-creating reviews..."
 
 Review.destroy_all
 
-rev1 = Review.find_or_create_by!(product_id: 1, user_id: 1, rating: 5)
+rev1 = Review.find_or_create_by!(product_id: 1, user_id: 1, rating: 5, description: "This is very nice!")
 rev2 = Review.find_or_create_by!(product_id: 1, user_id: 2, rating: 4)
 rev3 = Review.find_or_create_by!(product_id: 2, user_id: 3, rating: 3)
 rev4 = Review.find_or_create_by!(product_id: 6, user_id: 3, rating: 4)
 rev5 = Review.find_or_create_by!(product_id: 3, user_id: 1, rating: 1)
-rev6 = Review.find_or_create_by!(product_id: 4, user_id: 3, rating: 2)
+rev6 = Review.find_or_create_by!(product_id: 1, user_id: 3, rating: 2, description: "The fabric on this is super itchy!")
 rev7 = Review.find_or_create_by!(product_id: 6, user_id: 2, rating: 2)
 rev8 = Review.find_or_create_by!(product_id: 7, user_id: 1, rating: 5)
 
