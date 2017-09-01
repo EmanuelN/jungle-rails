@@ -53,7 +53,7 @@
       <div class="name"><%= User.find(review.user_id).first_name %></div>
     <br>
       <% if review.user_id == session[:user_id] %>
-        <%= button_to 'Delete', [@product, review], method: :delete, data: { confirm: 'Are you sure?' }%>
+        <%= button_to 'Delete', [@product, review], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn delete" %>
       <% end %>
     <% end %>
   </div>
