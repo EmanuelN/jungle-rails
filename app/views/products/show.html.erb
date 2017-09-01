@@ -41,7 +41,7 @@
       <% end %>
     </div>
     <h1>Reviews</h1><br>
-    <% @product.reviews.each do |review| %>
+    <% @product.reviews.order('created_at desc').each do |review| %>
       <h2><%= review.rating %>/5</h2>
     <% if review.description %>
       <%= review.description %>

@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to :root
     else
-      redirect_to @product, :flash => {:error => "Must be logged in to review."}
+      redirect_to @product, :flash => {:error => "Unable to save review"}
     end
   end
 
