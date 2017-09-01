@@ -131,6 +131,30 @@ cat3.products.create!({
   quantity: 23,
   price: 2_483.75
 })
+## USERS
+
+puts "Re-creating users..."
+
+User.destroy_all
+
+usr1 = User.find_or_create_by!(first_name: 'Emanuel', last_name: 'Neves', email: 'emanuel@neves.com', password_digest: '$2a$10$OIlcvbTTidCbC0Wf9cx/Lu4tjEIS4zOYsk4Vgy8woNiwmCSOJl2uC')
+usr2 = User.find_or_create_by!(first_name: 'John', last_name: 'Smith', email: 'smith@mail.com', password_digest: '$2a$10$OIlcvbTTidCbC0Wf9cx/Lu4tjEIS4zOYsk4Vgy8woNiwmCSOJl2uC')
+usr3 = User.find_or_create_by!(first_name: 'Mary', last_name: 'Taylor', email: 'mtaylor@business.com', password_digest: '$2a$10$OIlcvbTTidCbC0Wf9cx/Lu4tjEIS4zOYsk4Vgy8woNiwmCSOJl2uC')
+
+## REVIEWS
+
+puts "Re-creating reviews..."
+
+Review.destroy_all
+
+rev1 = Review.find_or_create_by!(product_id: 1, user_id: 1, rating: 5)
+rev2 = Review.find_or_create_by!(product_id: 1, user_id: 2, rating: 4)
+rev3 = Review.find_or_create_by!(product_id: 2, user_id: 3, rating: 3)
+rev4 = Review.find_or_create_by!(product_id: 6, user_id: 3, rating: 4)
+rev5 = Review.find_or_create_by!(product_id: 3, user_id: 1, rating: 1)
+rev6 = Review.find_or_create_by!(product_id: 4, user_id: 3, rating: 2)
+rev7 = Review.find_or_create_by!(product_id: 6, user_id: 2, rating: 2)
+rev8 = Review.find_or_create_by!(product_id: 7, user_id: 1, rating: 5)
 
 
 puts "DONE!"
