@@ -28,18 +28,21 @@
     </div>
   </article>
   <div class="reviews">
-    <div class="new-review">
-      <%= form_for [@product, @review] do |f| %>
 
-        <%= f.label :rating %>:
-        <%= f.select(:rating, [['1', 1],['2', 2],['3', 3],['4', 4],['5', 5]]) %><br />
+    <% if true %>
+      <div class="new-review">
+        <%= form_for [@product, @review] do |f| %>
 
-        <%= f.label :description %>:
-        <%= f.text_field :description %><br />
+          <%= f.label :rating %>:
+          <%= f.select(:rating, [['1', 1],['2', 2],['3', 3],['4', 4],['5', 5]]) %><br />
 
-        <%= f.submit %>
-      <% end %>
-    </div>
+          <%= f.label :description %>:
+          <%= f.text_field :description %><br />
+
+          <%= f.submit %>
+        <% end %>
+      </div>
+    <% end %>
     <h1>Reviews</h1><br>
     <% @product.reviews.order('created_at desc').each do |review| %>
       <h2><%= review.rating %>/5</h2>
@@ -49,6 +52,9 @@
     <% end %>
       <div class="name"><%= User.find(review.user_id).first_name %></div>
     <br>
+      <% if review.user_id == session[:user_id] %>
+        <%= button_to 'Delete', [@product, review], method: :delete, data: { confirm: 'Are you sure?' }%>
+      <% end %>
     <% end %>
   </div>
 </section>
