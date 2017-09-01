@@ -26,12 +26,16 @@
       </div>
     </div>
   </article>
-  <% @product.reviews.each do |review| %>
-  User: <%= User.find(review.user_id).first_name %><br>
-  Rating: <%= review.rating %>/5<br>
+  <div class="reviews">
+    <h1>Reviews</h1><br>
+    <% @product.reviews.each do |review| %>
+      <h2><%= review.rating %>/5</h2>
     <% if review.description %>
-    Details: <%= review.description %><br>
+      <%= review.description %>
+      <br>
     <% end %>
+      <div class="name"><%= User.find(review.user_id).first_name %></div>
     <br>
-  <% end %>
+    <% end %>
+  </div>
 </section>

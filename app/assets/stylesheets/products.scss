@@ -81,4 +81,27 @@ main section.products-show {
       max-width: 100%;
     }
   }
+  .reviews {
+    margin: 2em 0;
+    border: 1px solid #C6C6C7;
+    background: #E8E8E8;
+    border-radius: 10px;
+    padding: 1em;
+    width: 60%;
+    h1{
+      margin: 0;
+      padding-bottom: 0.5em;
+      border-bottom: 1px solid #C6C6C7;
+    }
+    h2{
+      color: #FB421A;
+      font-size: 1em;
+      margin: 0
+    }
+    .name {
+      margin: 0.2em 0;
+      color: blue;
+      font-size: 0.85em;
+    }
+  }
 }
