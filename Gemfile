@@ -36,6 +36,7 @@ gem 'rmagick'
 gem 'stripe'
 gem 'faker'
 
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -58,6 +59,7 @@ end
 group :test do
   gem 'shoulda-matchers', '~> 3.0', require: false
   gem 'simplecov'
+  gem 'codecov', require: false
 end
 
 group :production do
