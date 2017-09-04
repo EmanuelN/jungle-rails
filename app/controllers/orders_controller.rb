@@ -53,6 +53,8 @@ class OrdersController < ApplicationController
       end
     end
     @order.save!
+    @order.line_items.each do |item|
+    end
     UserMailer.order_email(@order).deliver_later
     @order
   end
