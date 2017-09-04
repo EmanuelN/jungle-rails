@@ -71,6 +71,14 @@ RSpec.describe User, type: :model do
       expect(User.authenticate_with_credentials("test@test.com", '1234567')).to eq(@user)
     end
 
+    it "returns the user if there are spaces in email" do
+      expect(User.authenticate_with_credentials("test@test.com ", "1234567")).to eq(@user)
+    end
+
+    it "returns the user if the case is different in email" do
+      expect(User.authenticate_with_credentials("test@test.COM", "1234567")).to eq(@user)
+    end
+
   end
 
 end

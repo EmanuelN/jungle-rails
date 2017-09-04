@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
   def self.authenticate_with_credentials(email_input, password_input)
-    user = User.find_by(email: email_input)
+    email_input.strip!
+    user = User.where('lower(email) = ?', email_input.downcase).first
     if !user.nil? && user.authenticate(password_input)
       user
     else
