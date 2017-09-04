@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     if user = User.authenticate_with_credentials(params[:email], params[:password])
-      session[:user_id] = user
+      session[:user_id] = user.id
       redirect_to '/'
     else
       @error = "Incorrect email and/or password"
