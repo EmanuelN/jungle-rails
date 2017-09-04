@@ -1,4 +1,4 @@
-# Jungle
+# Jungle [![coverage](https://codecov.io/gh/EmanuelN/jungle-rails/branch/master/graph/badge.svg)](https://codecov.io/gh/EmanuelN/jungle-rails)
 
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
