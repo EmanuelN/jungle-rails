@@ -15,4 +15,13 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: { case_sensitive: false }
   validates_format_of :email, :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
+  def self.authenticate_with_credentials(email_input, password_input)
+    user = User.find_by(email: email_input)
+    if !user.nil? && user.authenticate(password_input)
+      user
+    else
+      nil
+    end
+  end
+
 end

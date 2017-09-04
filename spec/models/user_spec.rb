@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  context "Validations:" do
+  describe "Validations:" do
     before do
       @user = User.create(
         first_name: "Emanuel",
@@ -47,4 +47,30 @@ RSpec.describe User, type: :model do
 
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    before do
+      @user = User.create(
+        first_name: 'Bob',
+        last_name: 'Adams',
+        password: '1234567',
+        password_confirmation: '1234567',
+        email: 'test@test.com'
+        )
+    end
+
+    it "returns nil if the user's email is wrong" do
+      expect(User.authenticate_with_credentials("test@test.net", "1234567")).to eq(nil)
+    end
+
+    it "returns nil if the user's password is wrong" do
+      expect(User.authenticate_with_credentials("test@test.com", '1234')).to eq(nil)
+    end
+
+    it "returns the user if the password is correct" do
+      expect(User.authenticate_with_credentials("test@test.com", '1234567')).to eq(@user)
+    end
+
+  end
+
 end
