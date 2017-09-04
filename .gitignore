@@ -11,7 +11,7 @@
 converage
 
 # Ignore carrier wave uploads for development
-/public/uploads
+#/public/uploads
 
 # Ignore db creds / settings
 /config/database.yml
