@@ -15,8 +15,17 @@ RSpec.feature "UserCreates", type: :feature do
     click_on "Submit"
 
     # DEBUG / VERIFY
-
     expect(page).to have_content "Test"
+  end
+
+  scenario "User creates account with missing params" do
+    visit root_path
+
+    click_on "Signup"
+    fill_in "user[email]", with: "test@mctestor.com"
+    click_on "Submit"
+
+    expect(page).to have_content "error"
   end
 
 end
