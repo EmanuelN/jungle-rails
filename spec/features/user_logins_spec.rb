@@ -18,13 +18,11 @@ RSpec.feature "UserLogins", type: :feature, js: true do
 
     fill_in "email", with: "test@mctestor.com"
     fill_in "password", with: "test12345"
-    save_screenshot
     click_on "Submit"
 
     # DEBUG / VERIFY
 
     expect(page).to have_content "Test"
-    save_screenshot
   end
 
 end
